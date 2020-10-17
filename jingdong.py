@@ -5,16 +5,13 @@ import time
 import xlwt
 
 def request_queue(queue, headers, allInfo):
-    while True:
-        try:
-            # 读取队列数据
-            q = queue.get()
-            response = requests.get(q, headers=headers).json()
-            allInfo.append(response)
-            break
-        except Exception as e:
-            print(e)
-            break
+    try:
+        # 读取队列数据
+        q = queue.get()
+        response = requests.get(q, headers=headers).json()
+        allInfo.append(response)
+    except Exception as e:
+        print(e)
 
 def get_data(list,type):
     data = []
