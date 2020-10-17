@@ -96,8 +96,9 @@ def main():
         threading2 = threading.Thread(target=request_queue, args=(notice_url, headers, notice_info))
         threading1.start()
         threading2.start()
-        threading1.join()
-        threading2.join()
+        if i == 9:
+            threading1.join()
+            threading2.join()
 
     # 解析数据
     auction_data = get_data(auction_info,0)
